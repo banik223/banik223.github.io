@@ -1,0 +1,35 @@
+# Restaurant reservation monitor config.
+# Each entry under `watches` describes one (restaurant, date, time-window) you
+# want monitored. When a slot inside the window opens, you get an SMS with a
+# tap-to-book link.
+#
+# Supported platforms: resy, opentable, tock
+# `date` accepts: YYYY-MM-DD, "today", or "tomorrow"
+# `time_window` is [earliest, latest] in 24h "HH:MM" format
+
+watches:
+  # ---- example: Din Tai Fung on Resy ----
+  - name: "Din Tai Fung — Century City"
+    platform: resy
+    venue_id: "REPLACE_ME"          # numeric Resy venue id (see README)
+    venue_slug: "din-tai-fung"      # used to build booking link
+    city_code: "la"                 # used to build booking link
+    party_size: 2
+    date: "tomorrow"
+    time_window: ["18:00", "18:45"]
+
+  # ---- example: OpenTable ----
+  # - name: "Carbone — NYC"
+  #   platform: opentable
+  #   venue_id: "1838"              # numeric OpenTable rid
+  #   party_size: 2
+  #   date: "2026-05-15"
+  #   time_window: ["19:00", "20:30"]
+
+  # ---- example: Tock ----
+  # - name: "Single Thread"
+  #   platform: tock
+  #   venue_id: "single-thread"     # the slug in the Tock URL
+  #   party_size: 2
+  #   date: "2026-06-01"
+  #   time_window: ["18:00", "20:00"]
